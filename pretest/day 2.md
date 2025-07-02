@@ -146,3 +146,78 @@ override fun onSaveInstanceState() {
 ```
 
 ---
+
+### ✅ **Jawaban**
+1. b. `onCreate()`
+2. c. Activity lain muncul di atas Activity saat ini
+3. d. Tidak selalu dijamin dipanggil
+4. d. `onRestart()`
+5. b. Setelah `onStop()` dan Activity dibuka lagi
+6. b. `onPause()`, `onStop()`
+7. c. `onSaveInstanceState()`
+8. c. `android:configChanges="orientation|screenSize"`
+9. c. `onStart()`
+10. b. Menjalankan logika utama setelah tampilan muncul
+
+11. False
+12. True
+13. False
+14. True
+15. True
+16. False
+17. False
+18. True
+19. False
+20. False
+21. `onCreate(), onStart(), onResume()`
+22. Untuk menyimpan data sementara sebelum activity dihancurkan
+23. `onPause()` Dipanggil saat Activity tidak lagi di foreground (tapi masih terlihat sebagian). Sementara, `onStop()` Dipanggil saat Activity tidak terlihat sama sekali (misalnya saat berpindah ke Activity lain).
+24. Activity akan di-recreate otomatis saat orientasi berubah, menyebabkan onCreate() dan seluruh lifecycle dijalankan ulang.
+25. Jika sistem mematikan proses paksa karena kekurangan memori (tanpa memberi kesempatan memanggil lifecycle).
+26. `onCreate()` harus menerima parameter `Bundle?.`
+```kotlin
+override fun onCreate(savedInstanceState: Bundle?) {
+  super.onCreate(savedInstanceState)
+  setContentView(R.layout.activity_main)
+}
+```
+27. `onStop()` tidak menerima parameter.
+```kotlin
+override fun onStop() {
+  super.onStop()
+  Log.d("LIFECYCLE", "Stopped")
+}
+```
+28. `super.onResume()` harus dipanggil lebih dulu, dan biasanya `setContentView()` hanya dipanggil di `onCreate()`.
+```kotlin
+override fun onResume() {
+  super.onResume()
+  // Tidak perlu setContentView di sini kecuali ingin reset layout
+}
+```
+29. `super.onCreate()` wajib dipanggil terlebih dahulu.
+
+
+```kotlin
+override fun onCreate(savedInstanceState: Bundle?) {
+  super.onCreate(savedInstanceState)
+  Log.d("LIFECYCLE", "Created")
+}
+```
+30. Method harus menerima parameter `outState`.
+```kotlin
+override fun onSaveInstanceState(outState: Bundle) {
+  super.onSaveInstanceState(outState)
+  outState.putString("username", "admin")
+}
+```
+
+
+
+
+
+
+
+
+
+
