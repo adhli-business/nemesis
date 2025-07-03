@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="conditionalChallenge">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/exercise/day 1/conditionalChallenge/ch3Conditional.jar!/" />
+      <root url="jar://$PROJECT_DIR$/exercise/day 1/conditionalChallenge/ch5Conditional.jar!/" />
+      <root url="jar://$PROJECT_DIR$/exercise/day 1/conditionalChallenge/ch4Conditional.jar!/" />
+      <root url="jar://$PROJECT_DIR$/exercise/day 1/conditionalChallenge/ch2Conditional.jar!/" />
+      <root url="jar://$PROJECT_DIR$/exercise/day 1/conditionalChallenge/ch1Conditional.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

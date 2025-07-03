@@ -1,5 +1,3 @@
----
-
 ## ✅ **Bagian 1: Pilihan Ganda (5 Soal)**
 
 ```
@@ -142,3 +140,91 @@ setContent(layout)
 ```
 
 ---
+
+## **Jawaban**
+1. C. TextView
+2. C. EditText
+3. B. ImageView
+4. C. ConstraintLayout
+5. C. RecyclerView
+6. False
+7. True
+8. True
+9. False
+10. True 
+11. ConstraintLayout
+12. RadioButton dan Spinner
+13. Membungkus EditText dengan label/hint animasi
+14. ` textView.text = "Hello world" `
+15. Fungsi `RecyclerView.Adapter` adalah sebagai jembatan antara data yang ditampilkan dan tampilan (view) yang digunakan untuk menampilkan data tersebut
+16. `TextView` digunakan untuk menampilkan teks, sementara `EditText` digunakan untuk user menginputkan data.
+17. Toast
+18. `LinearLayout` menyusun elemen sejajar (vertikal/horizontal), `RelativeLayout` menyusun relatif antar elemen.
+19. `EditText`
+20. `ImageButton` atau `Button` dengan drawableTop
+21. Perbaikan kode:
+```xml
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Hello" />
+```
+22. Perbaikan kode:
+```kotlin
+val btn = findViewById<Button>(R.id.button)
+btn.text = "Click Me"
+```
+
+23. Perbaikan kode: 
+```xml
+<LinearLayout
+    android:orientation="vertical"
+    ...>
+```
+
+24. Perbaikan kode: 
+``` kotlin
+val text = findViewById<TextView>(R.id.textView)
+text.text = "Hi"
+```
+
+25. Perbaikan kode:
+``` xml
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:src="@drawable/image" />
+```
+
+26. Perbaikan kode: 
+```kotlin
+val input = findViewById<EditText>(R.id.input)
+val value = input.text.toString
+```
+
+27. Perbaikan kode: 
+```xml
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:onClick="doSomething" />
+```
+
+28. Perbaikan kode: 
+```kotlin
+Toast.makeText(this, "Saved!", Toast.LENGTH_LONG).show()
+```
+
+29. Perbaikan kode:
+```xml
+<EditText
+    android:hint="Enter name"
+    ... />
+```
+
+30. Perbaikan kode:
+```kotlin
+val layout = LinearLayout(this)
+layout.orientation = LinearLayout.VERTICAL
+setContentView(layout)
+```
