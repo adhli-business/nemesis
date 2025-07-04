@@ -249,3 +249,168 @@ val data = result.body()
 ```
 
 ---
+Jawaban:
+1. c. Retrofit
+2. c. Mengirim permintaan HTTP GET ke endpoint users
+3. b. Untuk menjaga agar UI tidak macet saat HTTP call
+4. b. GsonConverterFactory
+5. c. Menentukan endpoint utama API
+6. c. Saat menambahkan parameter URL
+7. c. Response tidak sesuai format
+8. b. @POST
+9. c. Retrofit akan error saat parsing
+10. b. .enqueue()
+11. 
+- Retrofit adalah library high-level untuk HTTP yang mempermudah pemanggilan API RESTful, termasuk parsing JSON otomatis menggunakan converter seperti Gson.
+- OkHttp adalah low-level HTTP client yang digunakan oleh Retrofit di belakang layar. Kita bisa menggunakan OkHttp secara langsung untuk kontrol penuh atas request/response, seperti menambahkan logging interceptor atau custom timeout.
+
+12. 
+- Menggunakan callback .enqueue() (asynchronous)
+
+- Menggunakan suspend function dengan coroutine (misal: val result = api.getUser() dalam viewModelScope.launch)
+
+13. Dengan memeriksa response.isSuccessful. Contoh:
+
+```kotlin
+if (response.isSuccessful) {
+   val data = response.body()
+} else {
+   // handle error
+}
+```
+
+14. Digunakan untuk menambahkan header otorisasi (biasanya token JWT atau API key) ke setiap request.
+
+15. Suspend function adalah fungsi yang bisa dijalankan secara asynchronous dalam coroutine.
+Digunakan agar tidak memblok UI thread saat menunggu response dari Retrofit API.
+
+16. Contoh kasus: Aplikasi belanja yang perlu mengambil daftar produk dari server.
+
+17.
+
+- Tampilkan loading UI
+
+- Gunakan timeout yang sesuai
+
+- Tambahkan pagination jika datanya besar
+
+- Gunakan caching jika memungkinkan
+
+18. Dengan menangkap exception dalam try-catch:
+
+```kotlin
+try {
+    val response = api.getUser()
+} catch (e: TimeoutException) {
+    // Tampilkan pesan error ke user
+}
+``` 
+19. Agar aplikasi bisa memberikan feedback yang sesuai ke user, seperti:
+
+- 401 → perlu login ulang
+
+- 500 → masalah server, bisa coba lagi nanti
+
+20. DTO (Data Transfer Object) adalah class yang merepresentasikan struktur data yang dikirim/diterima dari API, biasanya sebagai data class.
+
+🛠️ FIX CODE
+21.
+
+```kotlin
+interface ApiService {
+    @GET("user")
+    fun getUser(): Call<User>
+}
+```
+
+22. Kesalahan: GsonConverterFactory belum dipanggil sebagai instance.
+
+```kotlin
+.addConverterFactory(GsonConverterFactory.create())
+```
+
+23. 
+```kotlin
+data class ApiResponse(
+    val status: String,
+    val data: User
+)
+
+data class User(
+    val id: Int,
+    val name: String
+)
+```
+
+24.
+```kotlin
+@POST("user/add")
+fun createUser(@Body user: User): Call<User>
+```
+
+25.
+```kotlin
+val call = apiService.getUser()
+call.enqueue(object : Callback<User> {
+    override fun onResponse(call: Call<User>, response: Response<User>) {
+        // handle result
+    }
+
+    override fun onFailure(call: Call<User>, t: Throwable) {
+        // handle error
+    }
+})
+```
+
+26.
+
+```kotlin
+@GET("user")
+fun getUser(@Query("id") id: Int): Call<User>
+```
+
+27. Gunakan suspend:
+
+```kotlin
+@GET("user")
+suspend fun getUser(): User
+```
+
+28.
+
+```kotlin
+val user = api.getUser()
+user.enqueue(object : Callback<User> {
+    override fun onResponse(call: Call<User>, response: Response<User>) {
+        // handle success
+    }
+
+    override fun onFailure(call: Call<User>, t: Throwable) {
+        // handle error
+    }
+})
+```
+
+29.
+```kotlin
+override fun onResponse(call: Call<User>, response: Response<User>) {
+    if (response.isSuccessful) {
+        val user = response.body()
+        // proses data
+    } else {
+        // handle error code
+    }
+}
+```
+
+30.
+```kotlin
+suspend fun fetchUser() {
+    try {
+        val result = api.getUser()
+        // gunakan result
+    } catch (e: Exception) {
+        // tangani error (network, parsing, dll)
+    }
+}
+```
