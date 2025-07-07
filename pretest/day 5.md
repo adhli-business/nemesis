@@ -183,3 +183,103 @@ interface UserDao {
 ```
 
 ---
+
+## Jawaban
+1. B. VideoView
+2. A. Intent ke browser atau YouTube app
+3. B. VideoView
+4. C. Mulai pemutaran
+5. C. ExoPlayer
+6. Jawaban: 
+- Menggunakan Intent ke aplikasi YouTube
+- Menggunakan YouTubePlayerView dari YouTube Android Player API.
+- (Opsional) Bisa juga menggunakan WebView untuk iframe YouTube.
+7. Jawaban:
+```kotlin
+val url = "https://youtu.be/abc123"
+val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+startActivity(intent)
+```
+8. Jawaban:
+- VideoView memutar video langsung dari file atau URL (streaming).
+- WebView menampilkan konten web seperti iframe YouTube (tidak optimal untuk native video).
+9. Perbaikan:
+``` kotlin
+val videoView = findViewById<VideoView>(R.id.videoView)
+val uri = Uri.parse("https://www.example.com/video.mp4") // Gunakan file .mp4, bukan link YouTube langsung
+videoView.setVideoURI(uri)
+videoView.start()
+```
+10. Perbaikan:
+
+```kotlin
+val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/abc123"))
+startActivity(intent)
+```
+11. C. Data sederhana seperti token, nama
+12. B. Aplikasi yang sama
+13. A. Editor
+14. C. putString()
+15. B. Menyimpan secara async
+16. Contoh:
+```kotlin
+val pref = getSharedPreferences("MyApp", Context.MODE_PRIVATE)
+val editor = pref.edit()
+editor.putString("username", "Putra")
+editor.apply()
+```
+17. Contoh:
+```kotlin
+val pref = getSharedPreferences("MyApp", Context.MODE_PRIVATE)
+pref.edit().clear().apply()
+```
+18. Jawaban:
+- String
+- Int
+- Boolean
+- Float
+- Long
+19. Perbaikan:
+```kotlin
+val pref = getSharedPreferences("MyApp", Context.MODE_PRIVATE)
+val editor = pref.edit()
+editor.putString("token", "abc123")
+editor.apply()
+```
+20. Perbaikan:
+```kotlin
+val pref = getPreferences(Context.MODE_PRIVATE)
+val name = pref.getString("username", null)
+```
+21. C. Database SQLite wrapper
+22. B. @Entity
+23. C. Akses ke database
+24. D. Semua benar
+25. C. Database dan DAO
+26. Jawaban:
+- `@Entity` (kelas data untuk tabel)
+- `@Dao` (interface akses database)
+- `@Database` (kelas utama Room)
+27. Jawaban:
+- `@PrimaryKey` menandakan kolom kunci utama unik dari entitas (biasanya ID).
+28. Contoh fungsi DAO:
+```kotlin
+@Query("SELECT * FROM user")
+fun getAllUsers(): List<User>
+```
+29. Perbaikan:
+```kotlin
+@Entity
+data class User(
+    @PrimaryKey val id: Int,
+    val name: String
+)
+```
+30. Perbaikan:
+```kotlin
+@Dao
+interface UserDao {
+    @Insert
+    fun insertUser(user: User)
+}
+```
