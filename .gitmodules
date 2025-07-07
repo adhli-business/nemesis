@@ -13,3 +13,6 @@
 [submodule "exercise/day 4/marketplace-sederhana"]
 	path = exercise/day 4/marketplace-sederhana
 	url = https://github.com/adhli-business/marketplace-sederhana.git
+[submodule "exercise/day 5/user-manager-day-5"]
+	path = exercise/day 5/user-manager-day-5
+	url = https://github.com/adhli-business/user-manager-day-5.git
