@@ -10,3 +10,6 @@
 [submodule "exercise/day 3/belanjaku-apps-catat-belanja"]
 	path = exercise/day 3/belanjaku-apps-catat-belanja
 	url = https://github.com/adhli-business/belanjaku-apps-catat-belanja.git
+[submodule "exercise/day 4/marketplace-sederhana"]
+	path = exercise/day 4/marketplace-sederhana
+	url = https://github.com/adhli-business/marketplace-sederhana.git
