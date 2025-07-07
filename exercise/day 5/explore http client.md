@@ -258,4 +258,12 @@ https://dummyjson.com
 
 - **URL**: `GET /products/{id}`
 
+#### ✅ GET Product by category
+
+- **URL**: `GET https://dummyjson.com/products/category/womens-shoes`
+
+#### ✅ GET all category
+
+- **URL**: `GET https://dummyjson.com/products/categories`
+
 ---
